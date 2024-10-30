@@ -1,0 +1,7 @@
+django
+django-environ
+drf-yasg
+djangorestframework-simplejwt
+django-filter
+django-rest-passwordreset
+sendgrid
