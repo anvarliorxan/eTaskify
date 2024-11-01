@@ -29,7 +29,7 @@ class CreateTaskAPI(APIView):
                 "message": "Task created successfully",
                 "result": serializer.data
             }
-            return Response(data, status=status.HTTP_200_OK)
+            return Response(data, status=status.HTTP_201_CREATED)
 
         data = {
             "status": '400',

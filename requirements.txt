@@ -5,3 +5,4 @@ djangorestframework-simplejwt
 django-filter
 django-rest-passwordreset
 sendgrid
+coverage

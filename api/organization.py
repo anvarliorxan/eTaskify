@@ -21,7 +21,7 @@ class CreateOrganizationAPI(APIView):
                 "message": "Organization and user created successfully",
                 "result": serializer.data
             }
-            return Response(data, status=status.HTTP_200_OK)
+            return Response(data, status=status.HTTP_201_CREATED)
 
         data = {
             "status": '400',
@@ -70,5 +70,5 @@ class CreateMemberApi(APIView):
                 'password': password
             }
 
-            return Response(data, status=status.HTTP_200_OK)
+            return Response(data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -23,9 +23,15 @@ class TaskSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         assigned_users = validated_data.pop('assigned_users', None)
-        task = Task.objects.create(**validated_data, created_by=self.context['request'].user,
-                                   organization=self.context['request'].user.my_organization.first())
 
+        organization = self.context['request'].user.my_organization.first()
+
+        if not organization:
+            raise serializers.ValidationError("User does not belong to any organization.")
+
+
+        task = Task.objects.create(**validated_data, created_by=self.context['request'].user,
+                                   organization=organization)
         if assigned_users:
             task.assigned_users.set(assigned_users)
             for user in assigned_users:
